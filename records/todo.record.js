@@ -21,7 +21,7 @@ class ToDoRecord {
 
   async insert() {
     this.id = this.id ?? uuid();
-    await pool.execute('INSERT INTO `todos` VALUES (:id, :title)', {id: this.id, title: this.title})
+    await pool.execute('INSERT INTO `todos` (`id`, `title`) VALUES (:id, :title)', {id: this.id, title: this.title,})
     return this.id;
   }
 

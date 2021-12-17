@@ -1,3 +1,125 @@
 * {
-font-family: Arial sans-serif;
+    font-family: Roboto, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 2%;
+    /*background-image: url("/assets/images/fauxels.jpg");*/
+    min-height: 100vh;
+}
+
+h1 {
+    text-align: center;
+    color: #934240;
+    font-size: 40px;
+}
+
+.todolist {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: repeat(4, 500px);
+    justify-items: center;
+    align-items: center;
+    width: 100%;
+}
+
+.onetodo-div {
+    margin: 10px 10px;
+    position: relative;
+    /*background-image: url('/assets/images/post-it.jpg');*/
+    background-size: 90% 400px;
+    background-repeat: no-repeat;
+    background-position: center;
+    text-align: center;
+    width: 100%;
+    height: 90%;
+    font-size: 18px;
+    font-weight: 300;
+}
+
+.onetodo-div-date {
+    position: absolute;
+    font-weight: 400;
+    top: 12%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.onetodo-div-title {
+    position: absolute;
+    margin-top: 10px;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70%;
+    height: auto;
+    text-align: center;
+    word-break: break-all;
+}
+
+.onetodo-div-button, .text-entry-div-button {
+    position: absolute;
+    left: 50%;
+    bottom: 5%;
+    transform: translateX(-50%);
+    display: block;
+    width: 110px;
+    height: 50px;
+    background-color: #ab843d;
+    border: none;
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: 600;
+    color: wheat;
+    box-shadow: 8px 8px 26px -6px rgba(39, 39, 50, 1);
+}
+
+.onetodo-div-button:focus, .text-entry-div-button:focus {
+    color: #272732;
+    box-shadow: 16px 16px 36px -18px rgba(39, 39, 50, 1);
+}
+
+.text-entry-div {
+    margin: 10px 10px;
+    position: relative;
+    text-align: center;
+    width: 100%;
+    height: 90%;
+}
+
+.text-entry-area {
+    margin-top: 20px;
+    box-sizing: border-box;
+    padding: 10px;
+    position: absolute;
+    font-size: 20px;
+    border: 1px solid #ab843d;
+    top: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    height: 80%;
+}
+
+.back-button {
+    display: block;
+    width: 200px;
+    height: 50px;
+    background-color: #ab843d;
+    border: none;
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: 600;
+    color: wheat;
+    box-shadow: 8px 8px 26px -6px rgba(39, 39, 50, 1);
+}
+
+.back-button:focus {
+    color: #272732;
+    box-shadow: 16px 16px 36px -18px rgba(39, 39, 50, 1);
+}
+a {
+    text-decoration: none;
 }
