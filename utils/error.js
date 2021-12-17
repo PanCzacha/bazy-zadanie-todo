@@ -9,7 +9,7 @@ function handleError(err, req, res, next) {
     res
       .status(404)
       .render("error", {
-        message: "Klient o podanym ID nie istnieje."
+        message: "Notatka nie istnieje."
       })
     return
   }

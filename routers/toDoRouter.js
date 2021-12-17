@@ -27,7 +27,7 @@ toDoRouter
   .delete("/:id/", async (req, res) => {
     const {id} = req.params;
     const noteToDelete = await ToDoRecord.find(id);
-    await noteToDelete.delete()
+    await noteToDelete.delete();
     res.render("todos/delete");
   })
 
