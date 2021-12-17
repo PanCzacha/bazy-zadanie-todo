@@ -1,0 +1,16 @@
+<h1 class="todolist">ToDos list</h1>
+{{#each todos}}
+    <h2>{{this.title}}</h2>
+    <p>Data dodania: {{this.date}}</p>
+    <form method="POST" action="/todo/{{this.id}}?_method=DELETE">
+        <button type="submit">Usuń</button>
+    </form>
+{{/each}}
+
+<h2>Dodaj notatkę</h2>
+
+
+<form method="POST" action="/todo/add">
+    <textarea cols="30" rows="10" name="note"></textarea>
+    <button type="submit">Dodaj notatkę</button>
+</form>
