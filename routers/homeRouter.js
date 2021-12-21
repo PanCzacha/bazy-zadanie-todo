@@ -4,7 +4,8 @@ const homeRouter = express.Router();
 
 homeRouter
   .get("/", (req, res) => {
-    res.redirect("/todo")
+    res
+      .redirect("/todo")
   })
 
 module.exports = {

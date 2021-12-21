@@ -1,6 +1,5 @@
 const {pool, uuid} = require('../utils/db')
-
-// Active Record - klasa to cała tabela, każda instancja tej klasy to pojedyńczy wiersz (rekord) w bazie danych
+const { tooShortError, tooLongError, noIdError, notFoundError} = require("../utils/error")
 
 class ToDoRecord {
   constructor(obj) {
@@ -12,10 +11,10 @@ class ToDoRecord {
 
   _validate() {
     if(this.title.trim().length < 5) {
-      throw new Error('Todo title should be at least 5 characters long.')
+      throw new tooShortError;
     }
     if(this.title.length > 150) {
-      throw new Error('Todo title should be at most 150 characters long.')
+      throw new tooLongError;
     }
   }
 
@@ -27,16 +26,15 @@ class ToDoRecord {
 
   async update() {
     if(!this.id) {
-      throw new Error("Todo ID is not present");
+      throw new noIdError;
     }
-    this._validate();
     await pool.execute('UPDATE `todos` SET `title` = :title WHERE `id` = :id', {id: this.id, title: this.title,})
     return this.id
   }
 
   async delete() {
     if(!this.id) {
-      throw new Error("Todo ID is not present");
+      throw new noIdError;
     }
     await pool.execute('DELETE FROM `todos` WHERE `id` = :id', {id: this.id,})
     return this.id
@@ -44,8 +42,13 @@ class ToDoRecord {
 
   static async find(id) {
     const [results] = await pool.execute('SELECT * FROM `todos` WHERE `id` = :id', {id,})
-    return results.length === 1 ? new ToDoRecord(results[0]) : null;
-  } // metody statyczne wywołujemy na całej klasie np. ToDoRecord.find('fsjfsfs')
+    if(id.length < 36) {
+      throw new notFoundError;
+    } else if (results.length === 0) {
+      throw new noIdError;
+    }
+    return new ToDoRecord(results[0]);
+  }
 
   static async findAll() {
     const [results] = await pool.execute('SELECT * FROM `todos`');

@@ -1,0 +1,7 @@
+<div class="edit">
+    <h1>Aktualizuj swoją notatkę</h1>
+    <form method="POST" action="/todo/{{id}}?_method=PUT">
+        <textarea class="text-entry-area" cols="30" rows="10" name="note" placeholder="{{title}}">{{title}}</textarea>
+        <button type="submit" class="text-entry-div-button">Aktualizuj notatkę</button>
+    </form>
+</div>

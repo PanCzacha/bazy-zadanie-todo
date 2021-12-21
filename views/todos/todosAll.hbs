@@ -4,9 +4,14 @@
     <div class="onetodo-div">
         <p class="onetodo-div-date">Data dodania:<br> {{this.date}}</p>
         <h2 class="onetodo-div-title">{{this.title}}</h2>
+        <div class="buttons">
         <form method="POST" action="/todo/{{this.id}}?_method=DELETE">
             <button class="onetodo-div-button" type="submit">Usuń</button>
         </form>
+        <form method="GET" action="/todo/{{this.id}}">
+            <button class="onetodo-div-button" type="submit">Edytuj</button>
+        </form>
+        </div>
     </div>
 {{/each}}
     <div class="text-entry-div">

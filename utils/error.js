@@ -1,32 +1,67 @@
-class valError extends Error {
-};
-
-class NotFoundError extends Error {
-};
+class tooShortError extends Error {
+}
+class tooLongError extends Error {
+}
+class noIdError extends Error {
+}
+class notFoundError extends Error {
+}
 
 function handleError(err, req, res, next) {
-  if (err instanceof NotFoundError) {
+  if (err instanceof tooShortError) {
     res
       .status(404)
       .render("error", {
-        message: "Notatka nie istnieje."
+        message: "Todo title should be at least 5 characters long.",
       })
     return
   }
+  else if (err instanceof tooLongError) {
+    res
+      .status(400)
+      .render("error", {
+        message: "Todo title should be at most 150 characters long",
+      })
 
-  console.error(err);
+  }
+  else if(err instanceof noIdError) {
+    res
+      .status(404)
+      .render("error", {
+        message: "Todo not found",
+      })
 
-  err instanceof valError ? res.status(400) : res.status(500);
+  }
+  else if (err instanceof notFoundError) {
+    res
+      .status(404)
+      .render("error", {
+        message: "404 - Page not found",
+      })
 
-  res.render('error', {
-    message: err instanceof valError ? err.message : "Wystąpił nieznany błąd, pracujemy nad jego rozwiązaniem," +
-      " spróbuj ponownie za jakiś czas",
-  });
+  }
+  else {
+    res
+      .status(500)
+      .render("error", {
+        message: "Something went wrong, we are working on it"
+      })
+  }
 }
 
+function handle404 (req, res) {
+  res
+    .status(404)
+    .render("error", {
+      message: "404 - Page not found",
+    })
+}
 
 module.exports = {
+  tooShortError,
+  tooLongError,
+  noIdError,
+  notFoundError,
   handleError,
-  valError,
-  NotFoundError,
+  handle404,
 }
