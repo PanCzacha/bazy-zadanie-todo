@@ -86,12 +86,6 @@ h1 {
     height: 50px;
 }
 
-.text-entry-div-button {
-    left: 50%;
-    bottom: 5%;
-    transform: translateX(-50%);
-}
-
 .onetodo-div-button, .text-entry-div-button  {
     position: absolute;
     left: 50%;
