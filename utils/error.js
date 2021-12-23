@@ -21,7 +21,6 @@ function handleError(err, req, res, next) {
       .render("error", {
         message: "Todo title should be at most 150 characters long",
       })
-
   }
   else if(err instanceof noIdError) {
     res
@@ -29,7 +28,6 @@ function handleError(err, req, res, next) {
       .render("error", {
         message: "Todo not found",
       })
-
   }
   else if (err instanceof notFoundError) {
     res
@@ -37,7 +35,6 @@ function handleError(err, req, res, next) {
       .render("error", {
         message: "404 - Page not found",
       })
-
   }
   else {
     res
