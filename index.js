@@ -21,9 +21,9 @@ app.set("view engine", ".hbs");
 
 app.use("/", homeRouter)
 app.use("/todo", toDoRouter);
-app.use(handle404);
-app.use(handleError);
 
+app.use(handleError);
+app.use(handle404);
 
 app.listen(port, "localhost", () => {
   console.log(`Listening on port ${port}`);
