@@ -14,7 +14,6 @@ function handleError(err, req, res, next) {
       .render("error", {
         message: "Todo title should be at least 5 characters long.",
       })
-    return
   }
   else if (err instanceof tooLongError) {
     res
