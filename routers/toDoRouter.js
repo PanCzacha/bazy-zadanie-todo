@@ -59,13 +59,17 @@ toDoRouter
       next(err)
     }
   })
-  .delete("/:id", async (req, res) => {
-    const {id} = req.params;
-    const noteToDelete = await ToDoRecord.find(id);
-    await noteToDelete.delete();
-    res
-      .status(200)
-      .render("todos/delete");
+  .delete("/:id", async (req, res, next) => {
+   try {
+     const {id} = req.params;
+     const noteToDelete = await ToDoRecord.find(id);
+     await noteToDelete.delete();
+     res
+       .status(200)
+       .render("todos/delete");
+   } catch(err) {
+     next(err);
+   }
   })
 
 module.exports = {
