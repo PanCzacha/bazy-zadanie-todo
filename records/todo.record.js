@@ -42,7 +42,7 @@ class ToDoRecord {
 
   static async find(id) {
     const [results] = await pool.execute('SELECT * FROM `todos` WHERE `id` = :id', {id,})
-    if(id.length < 36) {
+    if(id.length !== 36) {
       throw new notFoundError;
     } else if (results.length === 0) {
       throw new noIdError;
