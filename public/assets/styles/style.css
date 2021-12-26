@@ -103,7 +103,7 @@ h1 {
     box-shadow: 8px 8px 26px -6px rgba(39, 39, 50, 1);
 }
 
-.onetodo-div-button:focus, .text-entry-div-button:focus {
+.onetodo-div-button:focus, .text-entry-div-button:focus, .back-button:focus{
     color: #272732;
     box-shadow: 16px 16px 36px -18px rgba(39, 39, 50, 1);
 }
@@ -166,10 +166,6 @@ h1 {
     box-shadow: 8px 8px 26px -6px rgba(39, 39, 50, 1);
 }
 
-.back-button:focus {
-    color: #272732;
-    box-shadow: 16px 16px 36px -18px rgba(39, 39, 50, 1);
-}
 a {
     text-decoration: none;
 }

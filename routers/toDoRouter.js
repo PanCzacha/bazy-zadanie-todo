@@ -11,7 +11,7 @@ toDoRouter
         ...record,
         date: record.date.toLocaleDateString() + " " + record.date.toLocaleTimeString(),
       }
-    })
+    });
     res
       .status(200)
       .render("todos/todosAll", {
@@ -23,15 +23,15 @@ toDoRouter
     try {
       const {id} = req.params;
       const foundNote = await ToDoRecord.find(id);
-      const {title} = foundNote
+      const {title} = foundNote;
       res
         .status(200)
         .render("todos/edit", {
           id,
           title,
-        })
+        });
     } catch (err) {
-      next(err)
+      next(err);
     }
   })
   .post("/add", async (req, res, next) => {
@@ -54,9 +54,9 @@ toDoRouter
       await updatedNote.update();
       res
         .status(202)
-        .render("todos/updated")
+        .render("todos/updated");
     } catch (err) {
-      next(err)
+      next(err);
     }
   })
   .delete("/:id", async (req, res, next) => {
